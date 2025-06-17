@@ -15,18 +15,18 @@ pipeline {
                 bat 'npm install'
             }
         }
+
+        stage('Test') {
+            steps {
+                bat 'npm test'
+            }
+        }
         
         stage('Analisis de dependencias') {
             steps {
                 bat 'mkdir dependency-check-report || echo "Directorio ya existe"'
                 tool 'OWASP_DC_CLI'
                 dependencyCheck odcInstallation: 'OWASP_DC_CLI', additionalArguments: '--project "safenotes" --scan "." --format "HTML" --format "XML" --out "dependency-check-report" --enableExperimental'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat 'npm test'
             }
         }
     }
