@@ -26,7 +26,7 @@ pipeline {
             steps {
                 bat 'mkdir dependency-check-report || echo "Directorio ya existe"'
                 tool 'OWASP_DC_CLI'
-                dependencyCheck odcInstallation: 'OWASP_DC_CLI', additionalArguments: '--project "safenotes" --scan "." --format "HTML" --format "XML" --out "dependency-check-report" --enableExperimental'
+                dependencyCheck odcInstallation: 'OWASP_DC_CLI', additionalArguments: '--project "safenotes" --scan . --format "HTML" --out "dependency-check-report" --enableExperimental'
             }
         }
     }
