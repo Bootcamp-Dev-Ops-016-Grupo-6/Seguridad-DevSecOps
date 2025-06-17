@@ -24,6 +24,7 @@ pipeline {
         
         stage('Analisis de dependencias') {
             steps {
+                bat 'if not exist dependency-check-report mkdir dependency-check-report'
                 tool 'OWASP_DC_CLI'
                 dependencyCheck odcInstallation: 'OWASP_DC_CLI', additionalArguments: '--project "safenotes" --scan . --format "HTML" --out "dependency-check-report" --enableExperimental'
             }
