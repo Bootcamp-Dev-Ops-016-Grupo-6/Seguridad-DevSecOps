@@ -3,6 +3,7 @@ pipeline {
 
     tools {
         nodejs "safenotes"
+        jdk "JDK-17"
     }
 
     environment {
